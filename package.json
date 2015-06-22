@@ -1,0 +1,25 @@
+{
+  "name": "file-renamer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rename.js",
+  "dependencies": {
+    "lodash": "^3.9.3",
+    "q": "^1.4.1",
+    "readline": "^0.0.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kreediam/file-renamer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kreediam/file-renamer/issues"
+  },
+  "homepage": "https://github.com/kreediam/file-renamer#readme"
+}
