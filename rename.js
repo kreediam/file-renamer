@@ -5,14 +5,15 @@ var q = require('q'),
 	
 module.exports = function() {
 	return {
-		getfiles: function(path, selector) {
+		getfiles: function(path, extension) {
 			var deferred = q.defer(),
 				results;
 
-			fs.readdir(path, function(err, files) {
-				console.log(files);
-				
-				results = lo.filter(files, selector);
+			fs.readdir(path, function(err, files) {		
+				results = lo.filter(files, function(n) {
+				  return lo.endsWith(n, extension);
+				});
+
 				deferred.resolve(results);
 			});
 			
@@ -20,6 +21,3 @@ module.exports = function() {
 		}
 	};
 };
-
-// fs.rename(oldPath, newPath, function(err) {		
-// });

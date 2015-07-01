@@ -1,11 +1,6 @@
-var rename = require('./rename')(),
-	regex = /\w+.txt/;
-	
-function selector(value, index, collection) {
-	return regex.test(value);
-}
+var rename = require('./rename')();
 
-rename.getfiles('C:\\temp', regex.test)
+rename.getfiles('C:\\temp', '.js')
 	.then(function(matches) {
 		console.log('Found ' + matches.length);
 	});
