@@ -4,20 +4,18 @@ var q = require('q'),
 	lo = require('lodash');
 	
 module.exports = function() {
-	return {
-		getfiles: function(path, extension) {
-			var deferred = q.defer(),
-				results;
-
-			fs.readdir(path, function(err, files) {		
-				results = lo.filter(files, function(n) {
-				  return lo.endsWith(n, extension);
-				});
-
-				deferred.resolve(results);
+	
+	function getLast(path, extension) {
+		return q.nfcall(fs.readdir, path).then(function (files) {
+			var filtered = lo.filter(files, function(file) {
+				return lo.endsWith(file, extension);
 			});
 			
-			return deferred.promise;
-		}
+			return lo(filtered.sort()).last();
+		});
+	}
+			
+	return {
+		getLast: getLast
 	};
 };
